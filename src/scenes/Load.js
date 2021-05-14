@@ -29,29 +29,6 @@ class Load extends Phaser.Scene {
     }
 
     create() {
-   
-        this.anims.create({
-            key: 'swimming',
-            frames: this.anims.generateFrameNames('swim', {
-                prefix: 'swim/',
-                start: 1,
-                end: 8,
-                suffix: '.png',
-                zeroPad: 4,
-            }),
-            repeat: -1,
-            frameRate: 10
-        });
-        this.anims.create({
-            key: 'bloods',
-            frames: this.anims.generateFrameNumbers('bloodExplode', {
-                start: 0,
-                end: 9,
-                first: 0
-            }),
-            frameRate: 30
-        });
-
         this.scene.start('menuScene');  // move to menu scene
     }
 }
