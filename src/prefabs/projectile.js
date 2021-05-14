@@ -1,4 +1,4 @@
-/*class projectile extends Phaser.GameObjects.Sprite {
+class projectile extends Phaser.GameObjects.Sprite {
     constructor(scene,x, y, texture) {
         super(scene,x, y, 'projectile');
         scene.add.existing(this); //Place projectile in scene
@@ -10,7 +10,7 @@
     update() {
       
        
-     }*/
+     }
        
      
     
