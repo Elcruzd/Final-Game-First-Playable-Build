@@ -2,7 +2,7 @@
 ** Name: Zhendong Jiang - programming, game design
 **       Nathan Pon - art, audio assets
 **       Jiahui Li - art, audio assets
-** Porject: Final Game:
+** Project: Final Game:
 ** Game Title: 
 ** Date: 
 */
