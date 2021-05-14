@@ -38,7 +38,8 @@ class Play extends Phaser.Scene {
 
       //Fire projectile on click
       this.input.on('pointerdown', (pointer) =>{ 
-       let bullet = this.physics.add.sprite(this.p1.x, this.p1.y+300,'projectile');
+      this.bullet = this.physics.add.sprite(this.p1.x, this.p1.y+300,'projectile'); //Working code
+    //let bullet = new projectile (this, this.p1.x, this.p1.y, 'projectile');
        bullet.body.velocity.y = -300;
         this.sfx = this.sound.add('gunshot', {
           mute: false,
@@ -50,6 +51,7 @@ class Play extends Phaser.Scene {
       })
 
     }
+
 
   
     update() {
