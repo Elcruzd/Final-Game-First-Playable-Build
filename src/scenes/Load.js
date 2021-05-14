@@ -14,24 +14,31 @@ class Load extends Phaser.Scene {
 
     preload() {
         this.load.path = './assets/';
-        // load images asset
+        // load images (endless runner) 
         this.load.image('menuBackground', 'menu1.png');
         this.load.image('logo', 'Game_Logo_2.png');
-        this.load.image('sea', 'background2.png');
-        this.load.image('sea1', 'background_2.png');
-        this.load.image('sea2', 'background4.png');
-        this.load.image('sharks', 'SHARK_new.png');
-        this.load.image('whales', 'Orca.png');
-        this.load.image('items', 'Surfboard.png');
+       // this.load.image('sea', 'background2.png');
+        //this.load.image('sea1', 'background_2.png');
+       // this.load.image('sea2', 'background4.png');
+      //  this.load.image('sharks', 'SHARK_new.png');
+       // this.load.image('whales', 'Orca.png');
+       // this.load.image('items', 'Surfboard.png');
         this.load.image('over', 'gameover.png');
+      
+      //Placeholder art assets (final game)
+        this.load.image('city', 'FinalBGA.png')
+        this.load.image ('crosshair','CHgame.png')
+        
         // load audio asset
+        this.load.audio('gunshot', 'gunshot.wav');
         this.load.audio('select', 'select.wav');
-        this.load.audio('bgm', 'CMPM120_BGM.wav');
-        this.load.audio('death', 'dead.wav');
-        this.load.audio('over', 'Game_Over_1.wav');
-        this.load.audio('pickup', 'pickup.wav');
+        //this.load.audio('bgm', 'CMPM120_BGM.wav');
+       // this.load.audio('death', 'dead.wav');
+       // this.load.audio('over', 'Game_Over_1.wav');
+       // this.load.audio('pickup', 'pickup.wav');
+    
         // load atlas asset
-        this.load.atlas('swim', 'swimmer.png', 'swimmer.json');
+     //   this.load.atlas('swim', 'swimmer.png', 'swimmer.json');
         // load custom spritesheet
         // this.load.spritesheet('swim', 'Swim_animation_2_320_x_320.png', {
         //     frameWidth: 105,
@@ -39,12 +46,14 @@ class Load extends Phaser.Scene {
         //     startFrame: 0,
         //     endFrame: 7
         // });
+        /*
         this.load.spritesheet('bloodExplode', 'blood.png', {
             frameWidth: 64,
             frameHeight: 32,
             startFrame: 0,
             endFrame: 9
         });
+        */
     }
 
     create() {

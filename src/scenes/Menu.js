@@ -16,7 +16,8 @@ class Menu extends Phaser.Scene {
         // place menu background
         this.add.image(0, 0, 'menuBackground').setOrigin(0, 0);
         // place logo
-        this.add.image(game.config.width/2, game.config.height/4, 'logo').setOrigin(0.5);
+      //  this.add.image(game.config.width/2, game.config.height/4, 'logo').setOrigin(0.5);
+      this.add.text(20, 20, "Final Game");
         
         // menu text configuration
         let menuConfig = {
@@ -64,13 +65,13 @@ class Menu extends Phaser.Scene {
         this.add.text(game.config.width/2, game.config.height/2 + 160, 'PRESS UP & DOWN  ARROWS TO DODGE SHARKS AND WHALES', menuConfig).setOrigin(0.5);
         
         // define keys
-        // cursors = this.input.keyboard.createCursorKeys();
+       //  cursors = this.input.keyboard.createCursorKeys();
         
     }
 
     update() {
-    //     if(cursors.right.isDown) {
-    //         this.scene.start('playScene');
-    //     }
+  //   if(cursors.right.isDown) {
+           // this.scene.start('playScene');
+     //   }
     }
 }
