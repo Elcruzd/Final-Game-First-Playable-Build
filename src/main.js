@@ -6,8 +6,8 @@
 ** Game Title: 
 ** Date: 
 */
-
 // game configuration
+
 let config = {
     type: Phaser.CANVAS,
     width: 640,
@@ -27,3 +27,6 @@ let config = {
     },
     scene: [ Load, Menu, Credits, Play, End ]
 }
+let game = new Phaser.Game(config);
+let borderUIsize = game.config.height/20;
+let borderPadding = borderUIsize/3;
