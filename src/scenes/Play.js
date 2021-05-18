@@ -45,7 +45,10 @@ class Play extends Phaser.Scene {
 
       //Fire projectile on click
      this.input.on('pointerdown', (pointer) =>{ 
-     this.bullet = this.physics.add.sprite(this.p1.x, this.p1.y+300,'projectile'); //Working code
+
+      this.bullet = new projectile (this, this.p1.x, this.p1.y+300, 'projectile');
+
+     //this.bullet = this.physics.add.sprite(this.p1.x, this.p1.y+300,'projectile'); //Working code
      this.bullet.body.velocity.y = -300;  //Makes projectile visible
    
      this.p1Ammo -= 1
@@ -61,6 +64,15 @@ class Play extends Phaser.Scene {
       })
 
     }
+
+ update(){
+   //Temporary game over
+  if(this.p1Ammo <=0){
+    this.scene.start("menuScene");
+  }
+
+ }
+
 
 
 }
