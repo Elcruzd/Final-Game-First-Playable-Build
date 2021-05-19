@@ -29,19 +29,17 @@ class Play extends Phaser.Scene {
       });
       this.bgm.play();
       
-        //UI
-        this.add.rectangle(0,borderUIsize + borderPadding, game.config.width/4, borderUIsize * 2, 283033 ).setOrigin(0,0.7); 
-        this.healthText = this.add.text(16,16, 'Health: ', { fontSize: '16px', fill: '#000' });
-        this.add.rectangle(0,borderUIsize + borderPadding, game.config.width/4, borderUIsize * 2, 283033 ).setOrigin(-4,0.7); 
-        this.ammoText = this.add.text(16,32,`Ammo: ${this.p1Ammo}`, { fontSize: '16px', fill: '#000' });
+      //UI
+      this.add.rectangle(0,borderUIsize + borderPadding, game.config.width/4, borderUIsize * 2, 283033 ).setOrigin(0,0.7); 
+      this.healthText = this.add.text(16,16, 'Health: $ ', { fontSize: '16px', fill: '#000' });
+      this.add.rectangle(0,borderUIsize + borderPadding, game.config.width/4, borderUIsize * 2, 283033 ).setOrigin(-4,0.7); 
+      this.ammoText = this.add.text(16,32,`Ammo: ${this.p1Ammo}`, { fontSize: '16px', fill: '#000' });
 
      //Add group of enemies
        this.bossGroup = this.add.group({
          runChildUpdate:true
        })
-      this.time.delayedCall(1000, () => {
-        this.spawnBoss();
-    })
+     
   
       // this.boss1 =new Enemy(this, game.config.width/2, game.config.height-borderUIsize-borderPadding).setOrigin(0.5,1);
       // this.boss2 = new Enemy(this, game.config.width/2, game.config.height-borderUIsize-borderPadding).setOrigin(-0.5,1);
@@ -52,15 +50,12 @@ class Play extends Phaser.Scene {
     //Player movement with mouse 
     this.p1Controls();
 
+    this.time.delayedCall(1000, () => {
+      this.spawnBoss();
+    })
       
-      
-    }
+  }
 
-    //Spawn Enemy at random points
-    spawnBoss(){
-      this.boss1 = new Enemy(this, Phaser.Math.Between(0, game.config.width/2), Phaser.Math.Between(0, game.config.height-borderUIsize-borderPadding));
-      this.bossGroup.add(this.boss1);
-     }
     p1Controls() {
      
       this.input.on('pointermove', (pointer) =>{ 
@@ -90,15 +85,26 @@ class Play extends Phaser.Scene {
 
     }
 
- update(){
+    
+    //Spawn Enemy at random points
+    spawnBoss(){
+      this.boss1 = new Enemy(this, Phaser.Math.Between(0, game.config.width/2), Phaser.Math.Between(0,  game.config.height-borderUIsize-borderPadding)).setOrigin(0.5,1);
+      this.boss2 = new Enemy(this, Phaser.Math.Between(0, game.config.width/2), Phaser.Math.Between(0, game.config.height-borderUIsize-borderPadding)).setOrigin(-0.5,1);
+      this.bossGroup.add(this.boss1);
+      this.bossGroup.add(this.boss2);
+     
+     }
+
+ update(){ 
    //Temporary game over scene transition
   if(this.p1Ammo <=0){
     this.scene.start("menuScene");
   }
-  this.physics.overlap(this.bossGroup, this.bullet, this.hitEnemy,null, this)
+  //Collision Detection
+  this.physics.overlap(this.bossGroup, this.bullet, this.hitEnemy, null, this)
 
- }
-
+ 
+}
 
 
  //Collision Callback Function
@@ -111,8 +117,23 @@ hitEnemy(sprite, bullet) {
     volume: 1,
     rate: 1,
     loop: false 
-});
+   });
   this.collide.play();
   }
 
+  /*TO BE ADDED
+replenishAmmo(sprite, bullet) {
+  if(sprite.isDead (true))
+  {
+    this.p1Ammo += 15
+    this.ammoText.text = `Ammo: ${this.p1Ammo} `;
+  }
+}*/
+    
+    
 }
+
+ 
+
+
+
