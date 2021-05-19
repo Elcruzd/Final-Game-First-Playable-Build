@@ -28,5 +28,5 @@ let config = {
     scene: [ Load, Menu, Credits, Play, End ]
 }
 let game = new Phaser.Game(config);
-let borderUIsize = game.config.height/20;
-let borderPadding = borderUIsize/3;
+let borderUISize = game.config.height/20;
+let borderPadding = borderUISize/3;

@@ -30,9 +30,9 @@ class Play extends Phaser.Scene {
       this.bgm.play();
       
       //UI
-      this.add.rectangle(0,borderUIsize + borderPadding, game.config.width/4, borderUIsize * 2, 283033 ).setOrigin(0,0.7); 
+      this.add.rectangle(0,borderUISize + borderPadding, game.config.width/4, borderUISize * 2, 283033 ).setOrigin(0,0.7); 
       this.healthText = this.add.text(16,16, 'Health: $ ', { fontSize: '16px', fill: '#000' });
-      this.add.rectangle(0,borderUIsize + borderPadding, game.config.width/4, borderUIsize * 2, 283033 ).setOrigin(-4,0.7); 
+      this.add.rectangle(0,borderUISize + borderPadding, game.config.width/4, borderUISize * 2, 283033 ).setOrigin(-4,0.7); 
       this.ammoText = this.add.text(16,32,`Ammo: ${this.p1Ammo}`, { fontSize: '16px', fill: '#000' });
 
      //Add group of enemies
@@ -41,11 +41,11 @@ class Play extends Phaser.Scene {
        })
      
   
-      // this.boss1 =new Enemy(this, game.config.width/2, game.config.height-borderUIsize-borderPadding).setOrigin(0.5,1);
-      // this.boss2 = new Enemy(this, game.config.width/2, game.config.height-borderUIsize-borderPadding).setOrigin(-0.5,1);
+      // this.boss1 =new Enemy(this, game.config.width/2, game.config.height-borderUISize-borderPadding).setOrigin(0.5,1);
+      // this.boss2 = new Enemy(this, game.config.width/2, game.config.height-borderUISize-borderPadding).setOrigin(-0.5,1);
         
    //create player
-   this.p1 = new Player (this, game.config.width/2, game.config.height-borderUIsize-borderPadding).setOrigin(0.5,0.5); //add player 1
+   this.p1 = new Player (this, game.config.width/2, game.config.height-borderUISize-borderPadding).setOrigin(0.5,0.5); //add player 1
 
     //Player movement with mouse 
     this.p1Controls();
@@ -88,8 +88,8 @@ class Play extends Phaser.Scene {
     
     //Spawn Enemy at random points
     spawnBoss(){
-      this.boss1 = new Enemy(this, Phaser.Math.Between(0, game.config.width/2), Phaser.Math.Between(0,  game.config.height-borderUIsize-borderPadding)).setOrigin(0.5,1);
-      this.boss2 = new Enemy(this, Phaser.Math.Between(0, game.config.width/2), Phaser.Math.Between(0, game.config.height-borderUIsize-borderPadding)).setOrigin(-0.5,1);
+      this.boss1 = new Enemy(this, Phaser.Math.Between(0, game.config.width/2), Phaser.Math.Between(0,  game.config.height-borderUISize-borderPadding)).setOrigin(0.5,1);
+      this.boss2 = new Enemy(this, Phaser.Math.Between(0, game.config.width/2), Phaser.Math.Between(0, game.config.height-borderUISize-borderPadding)).setOrigin(-0.5,1);
       this.bossGroup.add(this.boss1);
       this.bossGroup.add(this.boss2);
      
