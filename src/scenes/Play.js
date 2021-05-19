@@ -16,26 +16,51 @@ class Play extends Phaser.Scene {
     create() {
      
         this.add.image(0, 0, 'city').setOrigin(0, 0);
-         this.p1Ammo = 50;
+       
+       //Ammo Count
+        this.p1Ammo = 50;  
+
+        //Play bgm
+        this.bgm = this.sound.add('bgm', {
+          mute: false,
+          volume: 1.5,
+          rate: 1.5,
+          loop: true 
+      });
+      this.bgm.play();
       
         //UI
-        this.add.rectangle(0,borderUIsize + borderPadding, game.config.width/4, borderUIsize * 2, 283033 ).setOrigin(0,0.7); //green UI
+        this.add.rectangle(0,borderUIsize + borderPadding, game.config.width/4, borderUIsize * 2, 283033 ).setOrigin(0,0.7); 
         this.healthText = this.add.text(16,16, 'Health: ', { fontSize: '16px', fill: '#000' });
         this.add.rectangle(0,borderUIsize + borderPadding, game.config.width/4, borderUIsize * 2, 283033 ).setOrigin(-4,0.7); 
         this.ammoText = this.add.text(16,32,`Ammo: ${this.p1Ammo}`, { fontSize: '16px', fill: '#000' });
-        
-        this.m1 = new Enemy(this, game.config.width/2, game.config.height-borderUIsize-borderPadding).setOrigin(0.5,1);
-        this.m2 = new Enemy(this, game.config.width/2, game.config.height-borderUIsize-borderPadding).setOrigin(-0.5,1);
-        this.p1 = new Player (this, game.config.width/2, game.config.height-borderUIsize-borderPadding).setOrigin(0.5,0.5); //add player 1
 
-      //Player movement with mouse 
-      this.p1Controls();
-     // this.physics.add.overlap(bullet,Enemy,this.hitEnemy, null, this)
+     //Add group of enemies
+       this.bossGroup = this.add.group({
+         runChildUpdate:true
+       })
+      this.time.delayedCall(1000, () => {
+        this.spawnBoss();
+    })
+  
+      // this.boss1 =new Enemy(this, game.config.width/2, game.config.height-borderUIsize-borderPadding).setOrigin(0.5,1);
+      // this.boss2 = new Enemy(this, game.config.width/2, game.config.height-borderUIsize-borderPadding).setOrigin(-0.5,1);
+        
+   //create player
+   this.p1 = new Player (this, game.config.width/2, game.config.height-borderUIsize-borderPadding).setOrigin(0.5,0.5); //add player 1
+
+    //Player movement with mouse 
+    this.p1Controls();
+
       
       
     }
 
- 
+    //Spawn Enemy at random points
+    spawnBoss(){
+      this.boss1 = new Enemy(this, Phaser.Math.Between(0, game.config.width/2), Phaser.Math.Between(0, game.config.height-borderUIsize-borderPadding));
+      this.bossGroup.add(this.boss1);
+     }
     p1Controls() {
      
       this.input.on('pointermove', (pointer) =>{ 
@@ -45,7 +70,7 @@ class Play extends Phaser.Scene {
 
       //Fire projectile on click
      this.input.on('pointerdown', (pointer) =>{ 
-
+     
       this.bullet = new projectile (this, this.p1.x, this.p1.y+300, 'projectile');
 
      //this.bullet = this.physics.add.sprite(this.p1.x, this.p1.y+300,'projectile'); //Working code
@@ -66,13 +91,28 @@ class Play extends Phaser.Scene {
     }
 
  update(){
-   //Temporary game over
+   //Temporary game over scene transition
   if(this.p1Ammo <=0){
     this.scene.start("menuScene");
   }
+  this.physics.overlap(this.bossGroup, this.bullet, this.hitEnemy,null, this)
 
  }
 
 
+
+ //Collision Callback Function
+hitEnemy(sprite, bullet) {
+  console.log('hit');
+  sprite.hit();
+  bullet.destroy();
+  this.collide = this.sound.add('monsterHit', {
+    mute: false,
+    volume: 1,
+    rate: 1,
+    loop: false 
+});
+  this.collide.play();
+  }
 
 }
