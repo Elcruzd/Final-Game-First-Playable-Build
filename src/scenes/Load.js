@@ -19,11 +19,13 @@ class Load extends Phaser.Scene {
         this.load.image('city', 'FinalBGA.png')
         this.load.image ('crosshair','CHgame.png')
         this.load.image ('monster', 'monsterBoss.png')
-        this.load.image ('projectile', 'projectile.png')
+        this.load.image ('projectile', 'bullet.png')
         
         // load audio asset
         this.load.audio('gunshot', 'gunshot.wav');
         this.load.audio('select', 'select.wav');
+        this.load.audio('monsterHit', 'monsterHit.wav');
+        this.load.audio('bgm', 'bgm.wav');
     
 
     }
