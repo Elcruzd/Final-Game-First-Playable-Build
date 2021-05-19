@@ -1,15 +1,19 @@
-class projectile extends Phaser.GameObjects.Sprite {
-    constructor(scene,x, y, texture) {
-        super(scene,x, y, 'projectile');
+class projectile extends Phaser.Physics.Arcade.Sprite {
+    constructor(scene, x, y, _texture) {
+        super(scene, x, y, 'projectile');
         scene.add.existing(this); //Place projectile in scene
-        let x = scene.Player.x
-        let y = scene.Player.y-16;
+       // this.x = scene.Player.x;
+       // this.y = scene.Player.y;
         scene.physics.world.enableBody(this);
-  
-    }
-    update() {
-      
        
+
+        
+    }
+
+
+    update() {
+
+      
      }
        
      
