@@ -23,7 +23,7 @@ class Menu extends Phaser.Scene {
         let menuConfig = {
             fontFamily: 'Courier',
             fontSize: '20px',
-            color: '#FFFFFF',
+            color: '#00044a',
             align: 'right',
             padding: {
                 top: 5,
@@ -33,6 +33,7 @@ class Menu extends Phaser.Scene {
         }
 
         // add play button
+        this.add.rectangle(game.config.width/2, game.config.height/2 + 32, game.config.width/2, borderUISize * 2, 0xFEEEBC)
         this.playButton = this.add.text(game.config.width/2, game.config.height/2 + 32, 'CLICK HERE TO START', menuConfig).setOrigin(0.5);
         // set interactive that can go to the play scene
         this.playButton.setInteractive();
@@ -48,6 +49,7 @@ class Menu extends Phaser.Scene {
         })
 
         // add credits button
+        this.add.rectangle(game.config.width/2, game.config.height/2 + 190, 0xFEEEBC).setOrigin(0.5);
         this.creditsButton = this.add.text(game.config.width/2, game.config.height/2 + 190, 'CLICK TO VIEW CREDITS', menuConfig).setOrigin(0.5);
         // set interactive that can go to the play scene
         this.creditsButton.setInteractive();
