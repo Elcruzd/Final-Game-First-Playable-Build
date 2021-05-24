@@ -33,6 +33,13 @@ class Play extends Phaser.Scene {
        this.bossGroup = this.add.group({
          runChildUpdate:true
        })
+
+       /*ANIMATIONS To be Added
+       this.anims.create({
+        key: "bossAnim",
+        frames: this.anims.generateFrameNumbers
+       })*/
+
       // this.boss1 =new Enemy(this, game.config.width/2, game.config.height-borderUISize-borderPadding).setOrigin(0.5,1);
       // this.boss2 = new Enemy(this, game.config.width/2, game.config.height-borderUISize-borderPadding).setOrigin(-0.5,1);
         
@@ -48,7 +55,7 @@ class Play extends Phaser.Scene {
     
     //create particles
     this.particleManager = this.add.particles('orange');
-    this.defeatExplosion = this.add.particles('particle2');
+    this.defeatExplosion = this.add.particles('explode');
 
     this.time.delayedCall(5000, () => {
       this.loopCall();  
@@ -68,8 +75,7 @@ class Play extends Phaser.Scene {
      
      this.bullet = new projectile (this, this.p1.x, this.p1.y+350, 'projectile');
 
-     this.bullet.body.velocity.y = -300;  //Makes projectile visible
-              
+     this.bullet.body.velocity.y = -300;  //Makes projectile visible   
     
      this.ammoCount -= 1
      this.ammoText.text = `Ammo: ${this.ammoCount}`;
@@ -88,7 +94,7 @@ class Play extends Phaser.Scene {
     //Spawn Enemy at random points
     spawnBoss(){
 
-      this.boss1 = new Enemy(this, Phaser.Math.Between(game.config.width, game.config.width/2), Phaser.Math.Between(0,  game.config.height-borderUISize-borderPadding)).setOrigin(0.5,1);
+      this.boss1 = new Enemy(this, Phaser.Math.Between(game.config.width, game.config.width/2), Phaser.Math.Between(0,  game.config.height)).setOrigin(0.5,1);
       this.bossGroup.add(this.boss1);
    
      
@@ -140,7 +146,7 @@ hitEnemy(sprite, bullet) {
     tint: { start: 0xFF7200 , end: 0xFF5000},
     scale: { start: 0.50, end: 0.50 },
     speed: 150,
-    lifespan: 2000,
+    lifespan: 1000,
     maxParticles: 20,
     blendMode: 'ADD'
   });
@@ -154,7 +160,6 @@ replenishAmmo(sprite) {
     this.ammoCount += 10
     this.ammoText.text = `Ammo: ${this.ammoCount}`;
 
-
     this.defeatExplosion.createEmitter({
       x: this.boss1.x,
       y: this.boss1.y,
@@ -165,8 +170,9 @@ replenishAmmo(sprite) {
       maxParticles: 20,
       blendMode: 'ADD'
     });
+    
    }
-}
+ }
     
     
 }
