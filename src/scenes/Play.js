@@ -138,6 +138,8 @@ hitEnemy(sprite, bullet) {
    });
   this.collide.play();
 
+  this.cameras.main.shake(250, 0.0075);
+
   //Create particles
 
   this.particleManager.createEmitter({
@@ -157,18 +159,18 @@ hitEnemy(sprite, bullet) {
 replenishAmmo(sprite) {
    if(sprite.isDead())
    {
-    this.ammoCount += 10
-    this.ammoText.text = `Ammo: ${this.ammoCount}`;
+     this.ammoCount += 10
+     this.ammoText.text = `Ammo: ${this.ammoCount}`;
 
-    this.defeatExplosion.createEmitter({
-      x: this.boss1.x,
-      y: this.boss1.y,
-      tint: { start: 0xFF7200 , end: 0xFF5000},
-      scale: { start: 0.75, end: 0.50 },
-      speed: 150,
-      lifespan: 2000,
-      maxParticles: 20,
-      blendMode: 'ADD'
+     this.defeatExplosion.createEmitter({
+       x: this.boss1.x,
+       y: this.boss1.y,
+       tint: { start: 0xFF7200 , end: 0xFF5000},
+       scale: { start: 0.75, end: 0.50 },
+       speed: 150,
+       lifespan: 2000,
+       maxParticles: 20,
+       blendMode: 'ADD'
     });
     
    }

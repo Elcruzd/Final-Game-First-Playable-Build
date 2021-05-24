@@ -16,8 +16,8 @@ class Menu extends Phaser.Scene {
         // place menu background
         this.add.image(0, 0, 'menuBackground').setOrigin(0, 0);
         // place logo
-      //  this.add.image(game.config.width/2, game.config.height/4, 'logo').setOrigin(0.5);
-      this.add.text(20, 20, "Final Game");
+        // this.add.image(game.config.width/2, game.config.height/4, 'logo').setOrigin(0.5);
+        this.add.text(20, 20, "Final Game");
         
         // menu text configuration
         let menuConfig = {
@@ -34,7 +34,7 @@ class Menu extends Phaser.Scene {
 
         // add play button
         this.add.rectangle(game.config.width/2, game.config.height/2 + 32, game.config.width/2, borderUISize * 2, 0xFEEEBC)
-        this.playButton = this.add.text(game.config.width/2, game.config.height/2 + 32, 'CLICK HERE TO START', menuConfig).setOrigin(0.5);
+        this.playButton = this.add.text(game.config.width/2, game.config.height/2 + 32, 'START', menuConfig).setOrigin(0.5);
         // set interactive that can go to the play scene
         this.playButton.setInteractive();
         this.playButton.on('pointerdown', () => {
