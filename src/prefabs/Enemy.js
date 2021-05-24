@@ -5,7 +5,7 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
         scene.physics.add.existing(this);
         this.setSize(128, 32);
         this.newMonster = true;
-        this.hP = 10; //set hitpoints
+        this.hP = 5; //set hitpoints
 }
 
     update() {
@@ -21,7 +21,7 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
     }
 
     isDead() {
-         //Destroy boss in multiple hits
+         //Destroy sprite in multiple hits
          if(this.hP <= 0)
          {
              this.destroy();
