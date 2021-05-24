@@ -39,7 +39,7 @@ class Menu extends Phaser.Scene {
         this.playButton.on('pointerdown', () => {
             this.selectSound = this.sound.add('select', {
                 mute: false,
-                volume: 1,
+                volume: 0.5,
                 rate: 1,
                 loop: false 
             });
@@ -54,7 +54,7 @@ class Menu extends Phaser.Scene {
         this.creditsButton.on('pointerdown', () => {
             this.selectSound = this.sound.add('select', {
                 mute: false,
-                volume: 1,
+                volume: 0.5,
                 rate: 1,
                 loop: false 
             });
